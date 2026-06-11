@@ -1,4 +1,52 @@
-# Análisis de Performance de Ventas y Retorno de Inversión (ROI) de Marketing
+# 🇬🇧 Sales Performance and Marketing Return on Investment (ROI) Analysis
+
+This project presents an Exploratory Data Analysis (EDA) and an interactive visualization model to evaluate business performance and the effectiveness of the company's marketing campaigns.
+
+The main objective was to unify Sales, Customers, and Marketing Campaigns databases to identify seasonality, top-performing products, and the actual relationship between ad spend and financial return (ROAS).
+
+## Interactive Dashboard
+
+_This project features an interactive key performance indicator (KPI) dashboard developed for data-driven decision making:_
+
+![Sales and Marketing Dashboard](./img/dashboard.png)
+
+## Technologies and Libraries Used
+
+- **Python 3.12**
+- **Pandas**
+- **Matplotlib & Seaborn**
+- **Plotly (Graph Objects & Subplots)**
+
+## Three Key Findings
+
+### 1. Seasonal Revenue Flows and Monthly Trends
+
+- There is considerable variability in the monthly revenue flow.
+- The highest revenue peaked in May 2024, followed by a notable drop in June.
+- **Recommendation:** Review the commercial strategy implemented in May to identify the drivers behind this surge in order to replicate it.
+
+### 2. Product Catalog Characterization
+
+- The Desk Lamp (Lámpara de Mesa) ranks as the product with the highest sales volume.
+- Technology and Home appliance items (e.g., Headphones and Microwaves) form the revenue foundation of the organization.
+
+### 3. Marketing Investment Effectiveness (ROAS)
+
+- **Low Correlation:** Linear correlation analysis revealed a coefficient of 0.24 between marketing investment and total sales. This indicates there is no clear correlation between ad spend and sales; meaning, a higher advertising budget does not guarantee increased sales.
+
+![Correlation Heatmap](./img/correlaciones.png)
+
+- **ROAS Distribution:** The Return on Ad Spend distribution is normal, broadly centered between 3,000 and 4,000.
+- **Organic Sales:** The scatter plot identified "High-Performance" products that experience high sales with a tight (medium/low) marketing budget. This indicates high organic demand without relying significantly on advertising scale.
+
+## Strategic Business Recommendations
+
+1. **Audit Ineffective Campaigns:** Reorganize or pause ad campaigns for items with high promotional costs but low sales performance.
+2. **Budget Reallocation:** Reallocate freed-up resources to the Decoration and Lighting categories (such as the Desk Lamp), boosting their visibility since they contain the products with the highest organic traction.
+
+---
+
+# 🇪🇸 Análisis de Performance de Ventas y Retorno de Inversión (ROI) de Marketing
 
 Este proyecto presenta un análisis exploratorio de datos (EDA) y la creación de un modelo de visualización interactivo para evaluar el rendimiento comercial y la efectividad de las campañas de marketing de la empresa.
 
