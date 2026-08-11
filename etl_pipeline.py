@@ -21,41 +21,40 @@ def transform_data(df_ventas, df_clientes, df_marketing):
     clientes = df_clientes.copy()
     marketing = df_marketing.copy()
 
-    if 'precio_unitario' in ventas.columns:
-        ventas['precio_unitario'] = ventas['precio_unitario'].replace(
+    if 'precio' in ventas.columns:
+        ventas['precio'] = ventas['precio'].astype(str).replace(
             {r'\$': '', ',': ''}, regex=True).astype(float)
         
-    if 'inversion_total' in marketing.columns:
-         marketing['inversion_total'] = marketing['inversion_total'].replace(
-             {r'\$': '', ',': ''}, regex=True).astype(float)
 
     ventas.dropna(inplace=True)
     ventas.drop_duplicates(inplace=True)
 
-    df_unificado = pd.merge(ventas, clientes, on='id_cliente', how='inner')
-    
     print("Transformación completada con éxito.")
-    return df_unificado
+    
+    return ventas, clientes, marketing
 
-def load_data(df_final, output_path="data/dataset_analitico_final.csv"):
-    print(f"Cargando datos procesados en: {output_path}")
+
+def load_data(df_v_limpio, df_c_limpio, df_m_limpio):
+    print("Cargando datos procesados...")
     
     # Crear carpeta si no existe
-    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    os.makedirs("data", exist_ok=True)
     
-    # Exportar a CSV
-    df_final.to_csv(output_path, index=False)
+    df_v_limpio.to_csv("data/ventas_limpio.csv", index=False)
+    df_c_limpio.to_csv("data/clientes_limpio.csv", index=False)
+    df_m_limpio.to_csv("data/marketing_limpio.csv", index=False)
+    
     print("Pipeline ETL ejecutado exitosamente. ✅")
 
 
 if __name__ == "__main__":
-  print("--- Iniciando Data Pipeline ---")
+    print("--- Iniciando Data Pipeline ---")
 
-  # Extract
-  df_v, df_c, df_m = extract_data()
+    # Extract
+    df_v, df_c, df_m = extract_data()
 
-  # Transform
-  dataset_final = transform_data(df_v, df_c, df_m)
+    # Transform
+    ventas_limpio, clientes_limpio, marketing_limpio = transform_data(df_v, df_c, df_m)
 
-  # Load
-  load_data(dataset_final)
+    # Load
+    load_data(ventas_limpio, clientes_limpio, marketing_limpio)
